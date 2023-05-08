@@ -1,13 +1,13 @@
-package demo.demoecommerce;
+package demo.trainecommerce;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoEcommerceApplication {
+public class TrainEcommerceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoEcommerceApplication.class, args);
+		SpringApplication.run(TrainEcommerceApplication.class, args);
 	}
 
 }
