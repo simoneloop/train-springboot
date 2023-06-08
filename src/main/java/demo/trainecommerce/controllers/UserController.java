@@ -71,7 +71,7 @@ public class UserController {
 
     
 
-    @GetMapping("/getAll")
+    @DeleteMapping("/getAll")
     public List<Users> getAll(){
         return us.getAll();
     }
