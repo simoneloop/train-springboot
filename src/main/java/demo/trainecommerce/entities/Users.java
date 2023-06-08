@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id",nullable = false)
+    @Column(name="id",nullable = false, unique = true)
     private Long id;
 
     @Column(name="first_name",nullable = false)
@@ -27,6 +27,13 @@ public class Users {
     @Column(name="last_name",nullable = false)
     private String lastName;
 
-    @Column(name = "email",nullable = false)
+    @Column(name = "email",nullable = false, unique = true)
     private String email;
+
+    
+
+
+    public String toString(){
+        return "\nNome: "+firstName+"\nCognone: "+lastName+"\nEmail: "+email+"\n";
+    }
 }
