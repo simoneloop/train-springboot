@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 
 public class ProductService {
 
-    final ProductService productService;
+    
     final ProductRepository productRepository;
 
     public boolean controll(Product p){

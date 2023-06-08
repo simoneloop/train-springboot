@@ -21,31 +21,33 @@ public class UserService {
     final UsersRepository usersRepository;
 
     public boolean controllRegex(Users u){
-        String nome = "^[a-zA-Z\s]+$";
+       /*  String nome = "^[a-zA-Z\s]+$";
         String cognome= "^[a-zA-Z\s]+$";
         String email ="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2.}$";
 
         boolean a = u.getFirstName().matches(nome);
         boolean b = u.getLastName().matches(cognome);
         boolean c = u.getEmail().matches(email);
-        return a&&b&&c;
+        return a&&b&&c; */
+        return true;
         
     }
 
 
 
-    public void saveUser(Users u) throws RuntimeException{
+    public Users saveUser(Users u) throws RuntimeException{
 
         boolean e =usersRepository.existsByEmail(u.getEmail());
-
         if(controllRegex(u)){
             if(!e){
+                System.out.println("arriva in entra nella controll");
                 u.setFirstName(u.getFirstName().toUpperCase().strip());
                 u.setLastName(u.getLastName().toUpperCase().strip());
                 u.setEmail(u.getEmail().toLowerCase().strip());
-                usersRepository.save(u);
-            }throw new UserAlreadyExistException();
-        }throw new DataNotCorrectException();
+                return usersRepository.save(u);
+            }
+            else{throw new UserAlreadyExistException();}
+        }else{throw new DataNotCorrectException();}
     }
     public void removeUser(String email)throws RuntimeException{
         boolean e =usersRepository.existsByEmail(email);

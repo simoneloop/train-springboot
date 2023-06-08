@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +27,7 @@ import demo.trainecommerce.services.UserService;
 //DELETE:rimuovere
 @RestController
 @RequestMapping("/users")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 
     @Autowired
@@ -41,9 +43,10 @@ public class UserController {
 
     @PostMapping("/add")
     public ResponseEntity saveUser(@RequestBody Users u){
+        System.out.println(u);
         try {
-            us.saveUser(u);
-            return new ResponseEntity("L'utente è stato aggiunto",HttpStatus.OK);
+            
+            return new ResponseEntity(us.saveUser(u),HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity(e.getClass().getSimpleName(),HttpStatus.BAD_REQUEST);
         }
@@ -72,9 +75,5 @@ public class UserController {
     public List<Users> getAll(){
         return us.getAll();
     }
-    @GetMapping("/testJPA")
-    public void testADD(){
-        Users u=new Users(null,"simone","lopez","simo@");
-        ur.save(u);
-    }
+    
 }

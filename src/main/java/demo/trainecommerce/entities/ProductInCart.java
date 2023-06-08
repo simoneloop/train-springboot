@@ -29,9 +29,6 @@ public class ProductInCart {
 
     @Column (name = "quantityInCart")
     private int quantity;
-
-    @ManyToOne
-    @JoinColumn(name = )
     
 
 
